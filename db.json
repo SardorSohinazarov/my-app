@@ -1,0 +1,17 @@
+{
+  "productList": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "productName": "sds",
+      "category": "Samsung",
+      "price": "sd",
+      "comment": "sdf",
+      "data": "2023-04-10T19:00:00.000Z",
+      "id": 2
+    }
+  ]
+}

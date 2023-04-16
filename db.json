@@ -1,33 +1,36 @@
 {
   "productList": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "productName": "sds",
-      "category": "Samsung",
-      "price": "sd",
-      "comment": "sdf",
-      "data": "2023-04-10T19:00:00.000Z",
-      "id": 2
-    },
-    {
-      "productName": "kjh",
-      "category": "Samsung",
-      "price": "lkj",
-      "comment": "klj",
-      "data": "2023-04-08T19:00:00.000Z",
-      "id": 3
-    },
-    {
       "productName": "My Phone",
       "category": "Samsung",
       "price": "123",
       "comment": "2324",
       "data": "2023-04-02T19:00:00.000Z",
       "id": 4
+    },
+    {
+      "productName": "Redmi3",
+      "category": "Redmi",
+      "price": "100",
+      "comment": "",
+      "data": "2023-04-04T19:00:00.000Z",
+      "id": 5
+    },
+    {
+      "productName": "Redmi 9",
+      "category": "Redmi",
+      "price": "300",
+      "comment": "holiti zo'r",
+      "data": "2023-04-11T19:00:00.000Z",
+      "id": 6
+    },
+    {
+      "productName": "S21",
+      "category": "Samsung",
+      "price": "1000",
+      "comment": "yangi",
+      "data": "2023-04-11T19:00:00.000Z",
+      "id": 7
     }
   ]
 }

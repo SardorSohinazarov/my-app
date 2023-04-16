@@ -14,20 +14,24 @@ import { MatTableDataSource} from '@angular/material/table';
 export class AppComponent implements OnInit{
   constructor(private dialog : MatDialog, private api: ApiService){}
   
-  displayedColumns: string[] = ['productName', 'category', 'price', 'data'];
+  displayedColumns: string[] = ['productName', 'category', 'price', 'data', 'action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  
+    ngOnInit(): void{
+      this.getAllProducts()
+    }
 
   title = 'Phone Store';
   openDialog() {
     this.dialog.open(DialogComponent,{
       width:"50%"
+    }).afterClosed().subscribe(res =>{
+      if(res == "save"){
+        this.getAllProducts()
+      }
     });
-  }
-
-  ngOnInit(): void{
-    this.getAllProducts()
   }
 
   getAllProducts(){
@@ -35,7 +39,6 @@ export class AppComponent implements OnInit{
       .subscribe(
         {
           next:(res) => {
-            console.log(res)
             this.dataSource = new MatTableDataSource(res)
             this.dataSource.paginator = this.paginator
             this.dataSource.sort = this.sort
@@ -54,5 +57,30 @@ export class AppComponent implements OnInit{
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  editProduct(row: any){
+    this.dialog.open(DialogComponent,{
+      width: '50%',
+      data: row
+    })
+    .afterClosed().subscribe(res =>{
+      if(res == "update"){
+        this.getAllProducts()
+      }
+    });
+  }
+
+  deleteProduct(id: number){
+    this.api.deleteProduct(id)
+    .subscribe({
+        next:(res) => {
+          alert("Product deleted successfully")
+          this.getAllProducts()
+        },
+        error:() => {
+          alert("Something went wrong while deleting products")
+        }
+      })
   }
 }

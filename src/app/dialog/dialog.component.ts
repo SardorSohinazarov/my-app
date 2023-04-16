@@ -24,19 +24,18 @@ export class DialogComponent{
   }
 
   AddProduct(){
-    console.log(this.productForm.value)
-    //if(this.productForm.valid){
-    //  this.api.postProduct(this.productForm.value)
-      // .subscribe({
-      //   next:()=>{
-      //     alert("Product was added succesfully")
-      //     this.productForm.reset()
-      //     this.dialogRef.close("save")
-      //   },
-      //   error:() =>{
-      //     alert("Something went wrong while adding")
-      //   }
-      // })
-    //}
+    if(this.productForm.valid){
+      this.api.postProduct(this.productForm.value)
+      .subscribe({
+        next:()=>{
+          alert("Product was added succesfully")
+          this.productForm.reset()
+          this.dialogRef.close("save")
+        },
+        error:() =>{
+          alert("Something went wrong while adding")
+        }
+      })
+    }
   }
 }

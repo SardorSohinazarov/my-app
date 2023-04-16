@@ -15,13 +15,14 @@ export class AppComponent implements OnInit{
   constructor(private dialog : MatDialog, private api: ApiService){}
   
   displayedColumns: string[] = ['productName', 'category', 'price', 'data', 'action'];
+  
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-    ngOnInit(): void{
-      this.getAllProducts()
-    }
+  ngOnInit(): void{
+    this.getAllProducts()
+  }
 
   title = 'Phone Store';
   openDialog() {
@@ -53,21 +54,17 @@ export class AppComponent implements OnInit{
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
+    if (this.dataSource.paginator)
       this.dataSource.paginator.firstPage();
-    }
   }
 
   editProduct(row: any){
     this.dialog.open(DialogComponent,{
       width: '50%',
       data: row
-    })
-    .afterClosed().subscribe(res =>{
-      if(res == "update"){
+    }).afterClosed().subscribe(res =>{
+      if(res == "update")
         this.getAllProducts()
-      }
     });
   }
 
